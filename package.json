@@ -1,0 +1,27 @@
+{
+  "name": "lambda-aws-best-practice",
+  "version": "1.0.0",
+  "description": "to learn lambda aws",
+  "main": "index.js",
+  "scripts": {
+    "gen-mock": "node lambda-best-practice/seed-generators",
+    "test": "jest -c jest.config.js --watch --notify --verbose --coverage",
+    "prestart": "start cmd.exe @cmd /k \"sls dynamodb start\"",
+    "start": "sls offline",
+    "postinstall": "sls dynamodb install"
+  },
+  "author": "Moniz Nguyen",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "faker": "^4.1.0",
+    "jest": "^24.9.0",
+    "json-schema-faker": "^0.5.0-rc19",
+    "serverless-dynamodb-client": "0.0.2",
+    "serverless-dynamodb-local": "^0.2.38",
+    "serverless-offline": "^5.12.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.544.0"
+  }
+}

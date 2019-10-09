@@ -12,8 +12,8 @@
 # Happy Coding!
 
 service: lambda-best-practice
-app: lambda-best-practice-app
-org: minhnguyenvan
+# app: lambda-best-practice-app
+# org: minhnguyenvan
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details

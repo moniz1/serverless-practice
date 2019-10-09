@@ -13,6 +13,10 @@ class DbContext {
   async getAll(params) {
     return this.db.scan(params).promise();
   }
+
+  async put(params) {
+    return this.db.put(params).promise();
+  }
 }
 
 module.exports = {

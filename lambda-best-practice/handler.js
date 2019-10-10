@@ -1,6 +1,6 @@
 "use strict";
 const { DbContext } = require("./layers/db");
-const { validateEmail } = require("./utils/index");
+const { sendError, isValidEmail } = require("./layers/common");
 
 async function getUsers() {
   const dbCtxt = new DbContext();
@@ -14,6 +14,7 @@ async function getUsers() {
   };
 }
 
+
 async function insertUser(event) {
   const dbCtxt = new DbContext();
 
@@ -21,7 +22,7 @@ async function insertUser(event) {
   let bodyParams;
   try {
     bodyParams = JSON.parse(event.body);
-    if (!validateEmail(bodyParams.email)) {
+    if (!isValidEmail(bodyParams.email)) {
       throw new Error('Email is invalid');
     }
 
@@ -49,7 +50,42 @@ async function insertUser(event) {
   }
 }
 
+
+/**
+ * createToDo()
+ * @param {*} event 
+ */
+async function createToDo(event) {
+  try {
+    const dbCtxt = new DbContext();
+    const body = JSON.parse(event.body);
+    if (!body || !body.title || !isValidEmail(body.userEmail) || !Number.isInteger(body.status)) {
+      throw new Error('Invalid input data.');
+    }
+
+    const item = {
+      title: body.title,
+      userEmail: body.userEmail,
+      status: body.status,
+      id: +new Date()
+    };
+
+    await dbCtxt.put({
+      TableName: 'toDos',
+      Item: item
+    });
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify(item)
+    };
+  } catch (error) {
+    return sendError(error.message);
+  }
+}
+
 module.exports = {
   getUsers,
-  insertUser
+  insertUser,
+  createToDo
 }

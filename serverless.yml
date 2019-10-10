@@ -24,8 +24,7 @@ plugins:
 provider:
   name: aws
   runtime: nodejs10.x
-  stage: ${opt:stage, 'dev'}
-  region: ${self:custom.env.region}
+  stage: ${opt:stage,'dev'}
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -37,13 +36,11 @@ provider:
         - "dynamodb:BatchWriteItem"
       Resource: "*"
   environment:
-    REGION: ${self:custom.env.region}
-    ENDPOINT: ${self:custom.env.endpoint}
-    ACCESS_KEY: ${self:custom.env.access_key}
-    SECRET_ACCESS_KEY: ${self:custom.env.secret_access_key}
+    DB_REGION: ${${self:custom.config}:DB_REGION}
+    DB_ENDPOINT: ${${self:custom.config}:DB_ENDPOINT}
+    DB_ACCESS_KEY_ID: ${${self:custom.config}:DB_ACCESS_KEY_ID}
+    DB_SECRET_ACCESS_KEY: ${${self:custom.config}:DB_SECRET_ACCESS_KEY}
 custom:
-  cfgPath: "./config"
-  env: ${file(${self:custom.cfgPath}/env.${self:provider.stage}.yml)}
   dynamodb:
     stages:
       - dev
@@ -63,6 +60,7 @@ custom:
           sources: [./lambda-best-practice/seeds/users.json]
         - table: toDos
           sources: [./lambda-best-practice/seeds/todos.json]
+  config: file(./lambda-best-practice/config/env.${self:provider.stage}.json)
 
 functions:
   hello:
@@ -79,6 +77,14 @@ functions:
           path: /users
           method: POST
           cors: true
+  createToDo: 
+    handler: lambda-best-practice/handler.createToDo
+    events:
+      - http: 
+          path: /todos
+          method: POST
+          cors: true
+
 resources:
   Resources:
     usersTable:

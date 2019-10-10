@@ -1,7 +1,3 @@
-process.env.REGION = 'us-east-1';
-process.env.ACCESS_KEY = 'AKIA4JNW5R2NU2C6NEZT';
-process.env.SECRET_ACCESS_KEY = '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';
-
 const toDay = new Date();
 
 describe("getUsers test suits", () => {
@@ -42,5 +38,86 @@ describe("getUsers test suits", () => {
     const { statusCode, body } = await handler.insertUser(event);
     expect(statusCode).toBe(400);
     expect(body.error).not.toBeNull();
+  });
+
+  it('should throw an error if the body data is empty', async () => {
+    const { statusCode, body } = await handler.createToDo();
+
+    expect(statusCode).toBe(400);
+    expect(body.message).not.toBeNull();
+  });
+
+  it('should throw an error if the status type is string', async () => {
+    const params = {
+      body: JSON.stringify({
+        status: "1",
+        title: "Hello, new todo 12345",
+        userEmail: "phudev95@gmail.com"
+      })
+    };
+    const { statusCode, body } = await handler.createToDo(params);
+    const res = JSON.parse(body);
+    
+    expect(statusCode).toBe(400);
+    expect(res.message).toMatch('Invalid input data.');
+  });
+
+  it('should throw an error if the title is empty', async () => {
+    const params = {
+      body: JSON.stringify({
+        status: 1,
+        userEmail: "phudev95@gmail.com"
+      })
+    };
+    const { statusCode, body } = await handler.createToDo(params);
+    const res = JSON.parse(body);
+    
+    expect(statusCode).toBe(400);
+    expect(res.message).toMatch('Invalid input data.');
+  });
+
+  it('should throw an error if the userEmail is empty', async () => {
+    const params = {
+      body: JSON.stringify({
+        status: 1,
+        title: "New todo..."
+      })
+    };
+    const { statusCode, body } = await handler.createToDo(params);
+    const res = JSON.parse(body);
+    
+    expect(statusCode).toBe(400);
+    expect(res.message).toMatch('Invalid input data.');
+  });
+
+  it('should throw an error if the userEmail is invalid', async () => {
+    const params = {
+      body: JSON.stringify({
+        status: 1,
+        title: "New todo...",
+        userEmail: "phudev95gmail"
+      })
+    };
+    const { statusCode, body } = await handler.createToDo(params);
+    const res = JSON.parse(body);
+    
+    expect(statusCode).toBe(400);
+    expect(res.message).toMatch('Invalid input data.');
+  });
+
+  it('should create a todo successfully', async () => {
+    const params = {
+      body: JSON.stringify({
+        status: 1,
+        title: "New todo...",
+        userEmail: "phudev95@gmail.com"
+      })
+    };
+    const { statusCode, body } = await handler.createToDo(params);
+    const res = JSON.parse(body);
+
+    expect(statusCode).toBe(200);
+    expect(res.id).toBeGreaterThanOrEqual(0);
+    expect(res).toMatchObject(JSON.parse(params.body));
   });
 })

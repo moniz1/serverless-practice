@@ -24,6 +24,8 @@ plugins:
 provider:
   name: aws
   runtime: nodejs10.x
+  stage: ${opt:stage, 'dev'}
+  region: ${self:custom.env.region}
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -34,10 +36,18 @@ provider:
         - "dynamodb:UpdateItem"
         - "dynamodb:BatchWriteItem"
       Resource: "*"
+  environment:
+    REGION: ${self:custom.env.region}
+    ENDPOINT: ${self:custom.env.endpoint}
+    ACCESS_KEY: ${self:custom.env.access_key}
+    SECRET_ACCESS_KEY: ${self:custom.env.secret_access_key}
 custom:
+  cfgPath: "./config"
+  env: ${file(${self:custom.cfgPath}/env.${self:provider.stage}.yml)}
   dynamodb:
     stages:
       - dev
+      - prod
     start:
       port: 8000
       inMemory: true
@@ -61,6 +71,13 @@ functions:
       - http: 
           path: /users
           method: GET
+          cors: true
+  insertUser:
+    handler: lambda-best-practice/handler.insertUser
+    events:
+      - http: 
+          path: /users
+          method: POST
           cors: true
 resources:
   Resources:

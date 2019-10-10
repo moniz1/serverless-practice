@@ -24,6 +24,12 @@ plugins:
 provider:
   name: aws
   runtime: nodejs10.x
+  stage:  ${opt:stage, 'local'}
+  environment:
+      DB_REGION: ${file(./env/.env.${self:provider.stage}.json):DB_REGION}
+      DB_ENDPOINT: ${file(./env/.env.${self:provider.stage}.json):DB_ENDPOINT}
+      DB_ACCESS_KEY: ${file(./env/.env.${self:provider.stage}.json):DB_ACCESS_KEY}
+      DB_SECET_KEY: ${file(./env/.env.${self:provider.stage}.json):DB_SECET_KEY}
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -77,10 +83,10 @@ functions:
           method: GET
           cors: true
   update:
-    handler: lambda-best-practice/handler.updateUsers 
+    handler: lambda-best-practice/handler.updateUser 
     events:
      - http:
-         path: users/{email}
+         path: users/update/{email}
          method: put
          cors: true
 resources:

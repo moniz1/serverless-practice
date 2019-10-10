@@ -1,5 +1,6 @@
 "use strict";
 const { DbContext } = require("./layers/db");
+const {sendMessage} = require("./utils/sendMessage")
 
 async function getUsers() {
   const dbCtxt = new DbContext();
@@ -23,6 +24,7 @@ async function getData(event) {
       users: Items
     })
   };
+}
 async function insertUser(event) {
   const dbCtxt = new DbContext();
 
@@ -49,36 +51,48 @@ async function insertUser(event) {
     })
   };
 }
-async function updateUsers(event) {
+async function updateUser(event) {
   const dbCtxt = new DbContext();
   const Table = "users"
   let userEmail = event.pathParameters.email;
-  let body = JSON.parse(event.body);
-
+  
+  if(!isNaN(event.body)){
+    return sendMessage(500,'body cannot be empty')
+  }
+  let body={}
+  try{
+    body = JSON.parse(event.body);
+  }catch(err){
+    return sendMessage(500,'body params is invalid')
+  }
+  
+  if(body.email && body.email != userEmail){
+    return sendMessage(400,'email is cannot be modified')
+  }
   let params = {
     TableName: Table,
     Key: {
       email: userEmail
     },
     UpdateExpression: "set firstname = :f, lastname=:l",
+    
     ExpressionAttributeValues: {
       ':f': body.firstname,
       ':l': body.lastname
     },
     ReturnValues: "UPDATED_NEW"
   }
-  await dbCtxt.updateUser(params)
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message:`update successfully for email ${userEmail}`
-    })
-  };
+  try{
+    await dbCtxt.updateUser(params)
+    return sendMessage(200,`update successfully for email ${userEmail}`)
+  }catch(err){
+    return sendMessage(500,`firstname & lastname must not be empty`)
+  }
 }
 
 module.exports = {
   getUsers,
   insertUser,
-  updateUsers,
+  updateUser,
   getData
 }

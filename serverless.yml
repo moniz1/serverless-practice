@@ -39,7 +39,7 @@ custom:
     stages:
       - dev
     start:
-      port: 8001
+      port: 8000
       inMemory: true
       heapInitial: 200m
       heapMax: 1g
@@ -61,6 +61,13 @@ functions:
       - http: 
           path: /users
           method: GET
+          cors: true
+  insertUser:
+    handler: lambda-best-practice/handler.insertUser
+    events:
+      - http: 
+          path: /users
+          method: POST
           cors: true
   getdata:
     handler: lambda-best-practice/handler.getData

@@ -1,7 +1,7 @@
 "use strict";
 const { DbContext } = require("./layers/db");
 
-async function getUsers(event) {
+async function getUsers() {
   const dbCtxt = new DbContext();
 
   const { Items } = await dbCtxt.getAll({ TableName: "users" });
@@ -23,8 +23,32 @@ async function getData(event) {
       users: Items
     })
   };
-}
+async function insertUser(event) {
+  const dbCtxt = new DbContext();
 
+  if (typeof event.body === 'undefined' || !event.body) throw new Error('Body params is empty in event');
+  let bodyParams;
+  try {
+    bodyParams = JSON.parse(event.body);
+  } catch(e) {
+    throw new Error('Body params is invalid');
+  }
+
+  await dbCtxt.put({
+    TableName: "users",
+    Item: {
+      email: bodyParams.email,
+      firstname: bodyParams.firstname,
+      lastname: bodyParams.lastname
+    },
+  });
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      user: bodyParams
+    })
+  };
+}
 async function updateUsers(event) {
   const dbCtxt = new DbContext();
   const Table = "users"
@@ -54,6 +78,7 @@ async function updateUsers(event) {
 
 module.exports = {
   getUsers,
+  insertUser,
   updateUsers,
   getData
-};
+}

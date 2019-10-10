@@ -4,6 +4,7 @@
   "description": "to learn lambda aws",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
     "gen-mock": "node lambda-best-practice/seed-generators",
     "test": "jest -c jest.config.js --watchAll=false --notify --verbose --coverage",
     "prestart": "start cmd.exe @cmd /k \"sls dynamodb start\"",

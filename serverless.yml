@@ -24,12 +24,7 @@ plugins:
 provider:
   name: aws
   runtime: nodejs10.x
-  stage:  ${opt:stage, 'local'}
-  environment:
-      DB_REGION: ${file(./lambda-best-practice/env/.env.${self:provider.stage}.json):DB_REGION}
-      DB_ENDPOINT: ${file(./lambda-best-practice/env/.env.${self:provider.stage}.json):DB_ENDPOINT}
-      DB_ACCESS_KEY: ${file(./lambda-best-practice/env/.env.${self:provider.stage}.json):DB_ACCESS_KEY}
-      DB_SECET_KEY: ${file(./lambda-best-practice/env/.env.${self:provider.stage}.json):DB_SECET_KEY}
+  stage: ${opt:stage,'dev'}
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -40,6 +35,11 @@ provider:
         - "dynamodb:UpdateItem"
         - "dynamodb:BatchWriteItem"
       Resource: "*"
+  environment:
+    DB_REGION: ${${self:custom.config}:DB_REGION}
+    DB_ENDPOINT: ${${self:custom.config}:DB_ENDPOINT}
+    DB_ACCESS_KEY_ID: ${${self:custom.config}:DB_ACCESS_KEY_ID}
+    DB_SECRET_ACCESS_KEY: ${${self:custom.config}:DB_SECRET_ACCESS_KEY}
 
 package:
   exclude:
@@ -51,11 +51,13 @@ layers:
   commonLibs:
     path: layer
     compatibleRuntimes:
-      - nodejs10.x      
+      - nodejs10.x
+      
 custom:
   dynamodb:
     stages:
       - dev
+      - prod
     start:
       port: 8000
       inMemory: true
@@ -71,6 +73,7 @@ custom:
           sources: [./lambda-best-practice/seeds/users.json]
         - table: toDos
           sources: [./lambda-best-practice/seeds/todos.json]
+  config: file(./lambda-best-practice/config/env.${self:provider.stage}.json)
 
 functions:
   hello:
@@ -87,6 +90,13 @@ functions:
     events:
       - http: 
           path: /users
+          method: POST
+          cors: true
+  createToDo: 
+    handler: lambda-best-practice/handler.createToDo
+    events:
+      - http: 
+          path: /todos
           method: POST
           cors: true
   getdata:

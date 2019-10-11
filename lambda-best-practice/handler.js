@@ -1,8 +1,6 @@
 "use strict";
 const { DbContext } = require("./layers/db");
-const {sendMessage} = require("./utils/sendMessage")
-
-const moment = require('moment')
+const { sendError, isValidEmail } = require("./layers/common");
 
 async function getUsers() {
   const dbCtxt = new DbContext();
@@ -12,6 +10,11 @@ async function getUsers() {
     body: JSON.stringify({
       users: Items,
       message: `Today is ${moment().format('DD/MMM/YYYY')}`
+    })
+  };
+}
+
+      users: Items
     })
   };
 }
@@ -27,6 +30,7 @@ async function getData(event) {
     })
   };
 }
+
 async function insertUser(event) {
   const dbCtxt = new DbContext();
 
@@ -34,24 +38,66 @@ async function insertUser(event) {
   let bodyParams;
   try {
     bodyParams = JSON.parse(event.body);
-  } catch(e) {
-    throw new Error('Body params is invalid');
-  }
+    if (!isValidEmail(bodyParams.email)) {
+      throw new Error('Email is invalid');
+    }
 
-  await dbCtxt.put({
-    TableName: "users",
-    Item: {
-      email: bodyParams.email,
-      firstname: bodyParams.firstname,
-      lastname: bodyParams.lastname
-    },
-  });
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      user: bodyParams
-    })
-  };
+    await dbCtxt.put({
+      TableName: "users",
+      Item: {
+        email: bodyParams.email,
+        firstname: bodyParams.firstname,
+        lastname: bodyParams.lastname
+      },
+    });
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        user: bodyParams
+      })
+    };
+  } catch(error) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        error: error.message
+      })
+    };
+  }
+}
+
+
+/**
+ * createToDo()
+ * @param {*} event 
+ */
+async function createToDo(event) {
+  try {
+    const dbCtxt = new DbContext();
+    const body = JSON.parse(event.body);
+    if (!body || !body.title || !isValidEmail(body.userEmail) || !Number.isInteger(body.status)) {
+      throw new Error('Invalid input data.');
+    }
+
+    const item = {
+      title: body.title,
+      userEmail: body.userEmail,
+      status: body.status,
+      id: +new Date()
+    };
+
+    await dbCtxt.put({
+      TableName: 'toDos',
+      Item: item
+    });
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify(item)
+    };
+  } catch (error) {
+    return sendError(error.message);
+  }
 }
 async function updateUser(event) {
   const dbCtxt = new DbContext();
@@ -95,6 +141,7 @@ async function updateUser(event) {
 module.exports = {
   getUsers,
   insertUser,
+  createToDo,
   updateUser,
   getData
 }

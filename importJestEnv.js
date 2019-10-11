@@ -1,0 +1,1 @@
+process.env = require("./lambda-best-practice/config/env.test.json");

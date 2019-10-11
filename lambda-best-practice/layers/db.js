@@ -3,10 +3,10 @@ const AWS = require('aws-sdk');
 class DbContext {
   constructor() {
     this.db =  new AWS.DynamoDB.DocumentClient({
-      region: process.env.DB_REGION, 
+      region: process.env.DB_REGION,
       endpoint: process.env.DB_ENDPOINT,
-      accessKeyId: process.env.DB_ACCESS_KEY,  
-      secretAccessKey: process.env.DB_SECET_KEY
+      accessKeyId: process.env.DB_ACCESS_KEY_ID, // needed if you don't have aws credentials at all in env
+      secretAccessKey: process.env.DB_SECRET_ACCESS_KEY // needed if you don't have aws credentials at all in env
     });
   }
 

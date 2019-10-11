@@ -1,1 +1,0 @@
-process.env = require('./env/.env.test.json')

@@ -1,6 +1,7 @@
 "use strict";
 const { DbContext } = require("./layers/db");
-const { sendError, isValidEmail } = require("./layers/common");
+const { sendError, isValidEmail, sendMessage } = require("./layers/common");
+
 
 async function getUsers() {
   const dbCtxt = new DbContext();
@@ -9,12 +10,6 @@ async function getUsers() {
     statusCode: 200,
     body: JSON.stringify({
       users: Items,
-      message: `Today is ${moment().format('DD/MMM/YYYY')}`
-    })
-  };
-}
-
-      users: Items
     })
   };
 }

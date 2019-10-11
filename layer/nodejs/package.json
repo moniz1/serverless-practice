@@ -1,0 +1,11 @@
+{
+  "name": "lambda-aws-best-practice-node-modules",
+  "version": "1.0.0",
+  "description": "The layer of the folder node_modules",
+  "main": "index.js",
+  "author": "Moniz Nguyen",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.544.0"
+  }
+}

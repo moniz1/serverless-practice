@@ -62,9 +62,26 @@ custom:
           sources: [./lambda-best-practice/seeds/todos.json]
   config: file(./lambda-best-practice/config/env.${self:provider.stage}.json)
 
+package:
+  exclude:
+    - package.json
+    - package-lock.json
+    - node_modules/**
+    - coverage/**
+    - importJestEnv.js
+    - jest.config.js
+
+layers:
+  commonLibs:
+    path: layer
+    compatibleRuntimes:
+      - nodejs10.x      
+
 functions:
   hello:
     handler: lambda-best-practice/handler.getUsers
+    layers:
+      - {Ref: CommonLibsLambdaLayer}
     events:
       - http: 
           path: /users
@@ -72,6 +89,8 @@ functions:
           cors: true
   insertUser:
     handler: lambda-best-practice/handler.insertUser
+    layers:
+      - {Ref: CommonLibsLambdaLayer}
     events:
       - http: 
           path: /users
@@ -79,6 +98,8 @@ functions:
           cors: true
   createToDo: 
     handler: lambda-best-practice/handler.createToDo
+    layers:
+      - {Ref: CommonLibsLambdaLayer}
     events:
       - http: 
           path: /todos

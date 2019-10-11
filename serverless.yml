@@ -26,10 +26,10 @@ provider:
   runtime: nodejs10.x
   stage:  ${opt:stage, 'local'}
   environment:
-      DB_REGION: ${file(./env/.env.${self:provider.stage}.json):DB_REGION}
-      DB_ENDPOINT: ${file(./env/.env.${self:provider.stage}.json):DB_ENDPOINT}
-      DB_ACCESS_KEY: ${file(./env/.env.${self:provider.stage}.json):DB_ACCESS_KEY}
-      DB_SECET_KEY: ${file(./env/.env.${self:provider.stage}.json):DB_SECET_KEY}
+      DB_REGION: ${file(./lambda-best-practice/env/.env.${self:provider.stage}.json):DB_REGION}
+      DB_ENDPOINT: ${file(./lambda-best-practice/env/.env.${self:provider.stage}.json):DB_ENDPOINT}
+      DB_ACCESS_KEY: ${file(./lambda-best-practice/env/.env.${self:provider.stage}.json):DB_ACCESS_KEY}
+      DB_SECET_KEY: ${file(./lambda-best-practice/env/.env.${self:provider.stage}.json):DB_SECET_KEY}
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -40,6 +40,18 @@ provider:
         - "dynamodb:UpdateItem"
         - "dynamodb:BatchWriteItem"
       Resource: "*"
+
+package:
+  exclude:
+    - node_modules/**
+    - package.json
+    - package-lock.json
+
+layers:
+  commonLibs:
+    path: layer
+    compatibleRuntimes:
+      - nodejs10.x      
 custom:
   dynamodb:
     stages:
@@ -63,6 +75,8 @@ custom:
 functions:
   hello:
     handler: lambda-best-practice/handler.getUsers
+    layers:
+      - {Ref: CommonLibsLambdaLayer}
     events:
       - http: 
           path: /users

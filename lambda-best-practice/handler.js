@@ -2,14 +2,16 @@
 const { DbContext } = require("./layers/db");
 const {sendMessage} = require("./utils/sendMessage")
 
+const moment = require('moment')
+
 async function getUsers() {
   const dbCtxt = new DbContext();
-
   const { Items } = await dbCtxt.getAll({ TableName: "users" });
   return {
     statusCode: 200,
     body: JSON.stringify({
-      users: Items
+      users: Items,
+      message: `Today is ${moment().format('DD/MMM/YYYY')}`
     })
   };
 }

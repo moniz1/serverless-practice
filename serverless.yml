@@ -70,6 +70,13 @@ functions:
           path: /users
           method: GET
           cors: true
+  update:
+    handler: lambda-best-practice/handler.updateTodos
+    events:
+      - http: 
+          path: /todos
+          method: PUT
+          cors: true
   insertUser:
     handler: lambda-best-practice/handler.insertUser
     events:

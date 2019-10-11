@@ -123,7 +123,7 @@ async function updateTodos(event) {
     try {
         await dbCtxt.putItem(params);
     } catch (err) {
-        return sendError(error.message);
+        return sendError(err.message);
     }
     return {
         statusCode: 200,

@@ -60,6 +60,8 @@ custom:
           sources: [./lambda-best-practice/seeds/users.json]
         - table: toDos
           sources: [./lambda-best-practice/seeds/todos.json]
+        - table: Pause-V2
+          sources: [./lambda-best-practice/seeds/pause-v2.json]
   config: file(./lambda-best-practice/config/env.${self:provider.stage}.json)
 
 functions:
@@ -110,6 +112,20 @@ resources:
         KeySchema:
           - AttributeName: id
             KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+    pausesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Pause-V2
+        AttributeDefinitions:
+          - AttributeName: thingId
+            AttributeType: N
+        KeySchema:
+          - AttributeName: thingId
+            KeyType: HASH
+        
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1

@@ -1,0 +1,802 @@
+[
+    {
+        "thingId": 14,
+        "duration": 60,
+        "correctedTime": 42,
+        "status": "inactive",
+        "startTime": 12,
+        "endTime": 72
+    },
+    {
+        "thingId": 15,
+        "duration": 120,
+        "correctedTime": 132,
+        "status": "active",
+        "startTime": 42,
+        "endTime": 162
+    },
+    {
+        "thingId": 16,
+        "duration": 90,
+        "correctedTime": 100,
+        "status": "pending",
+        "startTime": 40,
+        "endTime": 130
+    },
+    {
+        "thingId": 17,
+        "duration": 60,
+        "correctedTime": 57,
+        "status": "active",
+        "startTime": 27,
+        "endTime": 87
+    },
+    {
+        "thingId": 18,
+        "duration": 60,
+        "correctedTime": 46,
+        "status": "active",
+        "startTime": 16,
+        "endTime": 76
+    },
+    {
+        "thingId": 19,
+        "duration": 120,
+        "correctedTime": 116,
+        "status": "inactive",
+        "startTime": 26,
+        "endTime": 146
+    },
+    {
+        "thingId": 20,
+        "duration": 60,
+        "correctedTime": 69,
+        "status": "pending",
+        "startTime": 39,
+        "endTime": 99
+    },
+    {
+        "thingId": 21,
+        "duration": 90,
+        "correctedTime": 78,
+        "status": "active",
+        "startTime": 18,
+        "endTime": 108
+    },
+    {
+        "thingId": 22,
+        "duration": 90,
+        "correctedTime": 80,
+        "status": "inactive",
+        "startTime": 20,
+        "endTime": 110
+    },
+    {
+        "thingId": 23,
+        "duration": 120,
+        "correctedTime": 129,
+        "status": "active",
+        "startTime": 39,
+        "endTime": 159
+    },
+    {
+        "thingId": 24,
+        "duration": 90,
+        "correctedTime": 85,
+        "status": "inactive",
+        "startTime": 25,
+        "endTime": 115
+    },
+    {
+        "thingId": 25,
+        "duration": 60,
+        "correctedTime": 80,
+        "status": "pending",
+        "startTime": 50,
+        "endTime": 110
+    },
+    {
+        "thingId": 26,
+        "duration": 120,
+        "correctedTime": 113,
+        "status": "active",
+        "startTime": 23,
+        "endTime": 143
+    },
+    {
+        "thingId": 27,
+        "duration": 90,
+        "correctedTime": 78,
+        "status": "active",
+        "startTime": 18,
+        "endTime": 108
+    },
+    {
+        "thingId": 28,
+        "duration": 60,
+        "correctedTime": 68,
+        "status": "pending",
+        "startTime": 38,
+        "endTime": 98
+    },
+    {
+        "thingId": 29,
+        "duration": 60,
+        "correctedTime": 52,
+        "status": "inactive",
+        "startTime": 22,
+        "endTime": 82
+    },
+    {
+        "thingId": 30,
+        "duration": 60,
+        "correctedTime": 59,
+        "status": "active",
+        "startTime": 29,
+        "endTime": 89
+    },
+    {
+        "thingId": 31,
+        "duration": 120,
+        "correctedTime": 136,
+        "status": "inactive",
+        "startTime": 46,
+        "endTime": 166
+    },
+    {
+        "thingId": 32,
+        "duration": 60,
+        "correctedTime": 41,
+        "status": "active",
+        "startTime": 11,
+        "endTime": 71
+    },
+    {
+        "thingId": 33,
+        "duration": 60,
+        "correctedTime": 77,
+        "status": "pending",
+        "startTime": 47,
+        "endTime": 107
+    },
+    {
+        "thingId": 34,
+        "duration": 90,
+        "correctedTime": 91,
+        "status": "pending",
+        "startTime": 31,
+        "endTime": 121
+    },
+    {
+        "thingId": 35,
+        "duration": 90,
+        "correctedTime": 106,
+        "status": "pending",
+        "startTime": 46,
+        "endTime": 136
+    },
+    {
+        "thingId": 36,
+        "duration": 120,
+        "correctedTime": 112,
+        "status": "inactive",
+        "startTime": 22,
+        "endTime": 142
+    },
+    {
+        "thingId": 37,
+        "duration": 90,
+        "correctedTime": 84,
+        "status": "active",
+        "startTime": 24,
+        "endTime": 114
+    },
+    {
+        "thingId": 38,
+        "duration": 60,
+        "correctedTime": 53,
+        "status": "inactive",
+        "startTime": 23,
+        "endTime": 83
+    },
+    {
+        "thingId": 39,
+        "duration": 90,
+        "correctedTime": 104,
+        "status": "pending",
+        "startTime": 44,
+        "endTime": 134
+    },
+    {
+        "thingId": 40,
+        "duration": 90,
+        "correctedTime": 82,
+        "status": "active",
+        "startTime": 22,
+        "endTime": 112
+    },
+    {
+        "thingId": 41,
+        "duration": 60,
+        "correctedTime": 52,
+        "status": "pending",
+        "startTime": 22,
+        "endTime": 82
+    },
+    {
+        "thingId": 42,
+        "duration": 90,
+        "correctedTime": 94,
+        "status": "active",
+        "startTime": 34,
+        "endTime": 124
+    },
+    {
+        "thingId": 43,
+        "duration": 60,
+        "correctedTime": 53,
+        "status": "inactive",
+        "startTime": 23,
+        "endTime": 83
+    },
+    {
+        "thingId": 44,
+        "duration": 90,
+        "correctedTime": 84,
+        "status": "active",
+        "startTime": 24,
+        "endTime": 114
+    },
+    {
+        "thingId": 45,
+        "duration": 90,
+        "correctedTime": 94,
+        "status": "inactive",
+        "startTime": 34,
+        "endTime": 124
+    },
+    {
+        "thingId": 46,
+        "duration": 60,
+        "correctedTime": 61,
+        "status": "active",
+        "startTime": 31,
+        "endTime": 91
+    },
+    {
+        "thingId": 47,
+        "duration": 120,
+        "correctedTime": 114,
+        "status": "pending",
+        "startTime": 24,
+        "endTime": 144
+    },
+    {
+        "thingId": 48,
+        "duration": 60,
+        "correctedTime": 43,
+        "status": "inactive",
+        "startTime": 13,
+        "endTime": 73
+    },
+    {
+        "thingId": 49,
+        "duration": 120,
+        "correctedTime": 121,
+        "status": "pending",
+        "startTime": 31,
+        "endTime": 151
+    },
+    {
+        "thingId": 50,
+        "duration": 120,
+        "correctedTime": 109,
+        "status": "active",
+        "startTime": 19,
+        "endTime": 139
+    },
+    {
+        "thingId": 51,
+        "duration": 90,
+        "correctedTime": 108,
+        "status": "inactive",
+        "startTime": 48,
+        "endTime": 138
+    },
+    {
+        "thingId": 52,
+        "duration": 90,
+        "correctedTime": 101,
+        "status": "pending",
+        "startTime": 41,
+        "endTime": 131
+    },
+    {
+        "thingId": 53,
+        "duration": 90,
+        "correctedTime": 99,
+        "status": "inactive",
+        "startTime": 39,
+        "endTime": 129
+    },
+    {
+        "thingId": 54,
+        "duration": 60,
+        "correctedTime": 74,
+        "status": "active",
+        "startTime": 44,
+        "endTime": 104
+    },
+    {
+        "thingId": 55,
+        "duration": 60,
+        "correctedTime": 46,
+        "status": "active",
+        "startTime": 16,
+        "endTime": 76
+    },
+    {
+        "thingId": 56,
+        "duration": 60,
+        "correctedTime": 77,
+        "status": "pending",
+        "startTime": 47,
+        "endTime": 107
+    },
+    {
+        "thingId": 57,
+        "duration": 90,
+        "correctedTime": 86,
+        "status": "inactive",
+        "startTime": 26,
+        "endTime": 116
+    },
+    {
+        "thingId": 58,
+        "duration": 60,
+        "correctedTime": 51,
+        "status": "inactive",
+        "startTime": 21,
+        "endTime": 81
+    },
+    {
+        "thingId": 59,
+        "duration": 90,
+        "correctedTime": 77,
+        "status": "pending",
+        "startTime": 17,
+        "endTime": 107
+    },
+    {
+        "thingId": 60,
+        "duration": 90,
+        "correctedTime": 81,
+        "status": "active",
+        "startTime": 21,
+        "endTime": 111
+    },
+    {
+        "thingId": 61,
+        "duration": 120,
+        "correctedTime": 115,
+        "status": "pending",
+        "startTime": 25,
+        "endTime": 145
+    },
+    {
+        "thingId": 62,
+        "duration": 90,
+        "correctedTime": 107,
+        "status": "pending",
+        "startTime": 47,
+        "endTime": 137
+    },
+    {
+        "thingId": 63,
+        "duration": 60,
+        "correctedTime": 63,
+        "status": "active",
+        "startTime": 33,
+        "endTime": 93
+    },
+    {
+        "thingId": 64,
+        "duration": 120,
+        "correctedTime": 103,
+        "status": "inactive",
+        "startTime": 13,
+        "endTime": 133
+    },
+    {
+        "thingId": 65,
+        "duration": 120,
+        "correctedTime": 121,
+        "status": "active",
+        "startTime": 31,
+        "endTime": 151
+    },
+    {
+        "thingId": 66,
+        "duration": 90,
+        "correctedTime": 94,
+        "status": "inactive",
+        "startTime": 34,
+        "endTime": 124
+    },
+    {
+        "thingId": 67,
+        "duration": 120,
+        "correctedTime": 114,
+        "status": "pending",
+        "startTime": 24,
+        "endTime": 144
+    },
+    {
+        "thingId": 68,
+        "duration": 120,
+        "correctedTime": 132,
+        "status": "pending",
+        "startTime": 42,
+        "endTime": 162
+    },
+    {
+        "thingId": 69,
+        "duration": 90,
+        "correctedTime": 104,
+        "status": "pending",
+        "startTime": 44,
+        "endTime": 134
+    },
+    {
+        "thingId": 70,
+        "duration": 60,
+        "correctedTime": 60,
+        "status": "inactive",
+        "startTime": 30,
+        "endTime": 90
+    },
+    {
+        "thingId": 71,
+        "duration": 60,
+        "correctedTime": 67,
+        "status": "active",
+        "startTime": 37,
+        "endTime": 97
+    },
+    {
+        "thingId": 72,
+        "duration": 60,
+        "correctedTime": 61,
+        "status": "active",
+        "startTime": 31,
+        "endTime": 91
+    },
+    {
+        "thingId": 73,
+        "duration": 90,
+        "correctedTime": 86,
+        "status": "inactive",
+        "startTime": 26,
+        "endTime": 116
+    },
+    {
+        "thingId": 74,
+        "duration": 60,
+        "correctedTime": 57,
+        "status": "pending",
+        "startTime": 27,
+        "endTime": 87
+    },
+    {
+        "thingId": 75,
+        "duration": 120,
+        "correctedTime": 114,
+        "status": "inactive",
+        "startTime": 24,
+        "endTime": 144
+    },
+    {
+        "thingId": 76,
+        "duration": 60,
+        "correctedTime": 75,
+        "status": "active",
+        "startTime": 45,
+        "endTime": 105
+    },
+    {
+        "thingId": 77,
+        "duration": 120,
+        "correctedTime": 129,
+        "status": "inactive",
+        "startTime": 39,
+        "endTime": 159
+    },
+    {
+        "thingId": 78,
+        "duration": 90,
+        "correctedTime": 93,
+        "status": "pending",
+        "startTime": 33,
+        "endTime": 123
+    },
+    {
+        "thingId": 79,
+        "duration": 120,
+        "correctedTime": 140,
+        "status": "active",
+        "startTime": 50,
+        "endTime": 170
+    },
+    {
+        "thingId": 80,
+        "duration": 90,
+        "correctedTime": 93,
+        "status": "inactive",
+        "startTime": 33,
+        "endTime": 123
+    },
+    {
+        "thingId": 81,
+        "duration": 120,
+        "correctedTime": 122,
+        "status": "pending",
+        "startTime": 32,
+        "endTime": 152
+    },
+    {
+        "thingId": 82,
+        "duration": 120,
+        "correctedTime": 104,
+        "status": "inactive",
+        "startTime": 14,
+        "endTime": 134
+    },
+    {
+        "thingId": 83,
+        "duration": 90,
+        "correctedTime": 104,
+        "status": "active",
+        "startTime": 44,
+        "endTime": 134
+    },
+    {
+        "thingId": 84,
+        "duration": 60,
+        "correctedTime": 47,
+        "status": "inactive",
+        "startTime": 17,
+        "endTime": 77
+    },
+    {
+        "thingId": 85,
+        "duration": 90,
+        "correctedTime": 91,
+        "status": "inactive",
+        "startTime": 31,
+        "endTime": 121
+    },
+    {
+        "thingId": 86,
+        "duration": 60,
+        "correctedTime": 71,
+        "status": "pending",
+        "startTime": 41,
+        "endTime": 101
+    },
+    {
+        "thingId": 87,
+        "duration": 60,
+        "correctedTime": 78,
+        "status": "inactive",
+        "startTime": 48,
+        "endTime": 108
+    },
+    {
+        "thingId": 88,
+        "duration": 90,
+        "correctedTime": 77,
+        "status": "pending",
+        "startTime": 17,
+        "endTime": 107
+    },
+    {
+        "thingId": 89,
+        "duration": 90,
+        "correctedTime": 83,
+        "status": "pending",
+        "startTime": 23,
+        "endTime": 113
+    },
+    {
+        "thingId": 90,
+        "duration": 60,
+        "correctedTime": 71,
+        "status": "pending",
+        "startTime": 41,
+        "endTime": 101
+    },
+    {
+        "thingId": 91,
+        "duration": 60,
+        "correctedTime": 58,
+        "status": "pending",
+        "startTime": 28,
+        "endTime": 88
+    },
+    {
+        "thingId": 92,
+        "duration": 90,
+        "correctedTime": 85,
+        "status": "active",
+        "startTime": 25,
+        "endTime": 115
+    },
+    {
+        "thingId": 93,
+        "duration": 120,
+        "correctedTime": 102,
+        "status": "pending",
+        "startTime": 12,
+        "endTime": 132
+    },
+    {
+        "thingId": 94,
+        "duration": 90,
+        "correctedTime": 108,
+        "status": "active",
+        "startTime": 48,
+        "endTime": 138
+    },
+    {
+        "thingId": 95,
+        "duration": 120,
+        "correctedTime": 101,
+        "status": "pending",
+        "startTime": 11,
+        "endTime": 131
+    },
+    {
+        "thingId": 96,
+        "duration": 120,
+        "correctedTime": 137,
+        "status": "inactive",
+        "startTime": 47,
+        "endTime": 167
+    },
+    {
+        "thingId": 97,
+        "duration": 120,
+        "correctedTime": 107,
+        "status": "pending",
+        "startTime": 17,
+        "endTime": 137
+    },
+    {
+        "thingId": 98,
+        "duration": 60,
+        "correctedTime": 48,
+        "status": "inactive",
+        "startTime": 18,
+        "endTime": 78
+    },
+    {
+        "thingId": 99,
+        "duration": 90,
+        "correctedTime": 98,
+        "status": "pending",
+        "startTime": 38,
+        "endTime": 128
+    },
+    {
+        "thingId": 100,
+        "duration": 120,
+        "correctedTime": 131,
+        "status": "pending",
+        "startTime": 41,
+        "endTime": 161
+    },
+    {
+        "thingId": 101,
+        "duration": 60,
+        "correctedTime": 46,
+        "status": "inactive",
+        "startTime": 16,
+        "endTime": 76
+    },
+    {
+        "thingId": 102,
+        "duration": 60,
+        "correctedTime": 80,
+        "status": "active",
+        "startTime": 50,
+        "endTime": 110
+    },
+    {
+        "thingId": 103,
+        "duration": 90,
+        "correctedTime": 77,
+        "status": "inactive",
+        "startTime": 17,
+        "endTime": 107
+    },
+    {
+        "thingId": 104,
+        "duration": 90,
+        "correctedTime": 100,
+        "status": "inactive",
+        "startTime": 40,
+        "endTime": 130
+    },
+    {
+        "thingId": 105,
+        "duration": 60,
+        "correctedTime": 55,
+        "status": "inactive",
+        "startTime": 25,
+        "endTime": 85
+    },
+    {
+        "thingId": 106,
+        "duration": 60,
+        "correctedTime": 54,
+        "status": "pending",
+        "startTime": 24,
+        "endTime": 84
+    },
+    {
+        "thingId": 107,
+        "duration": 60,
+        "correctedTime": 73,
+        "status": "active",
+        "startTime": 43,
+        "endTime": 103
+    },
+    {
+        "thingId": 108,
+        "duration": 90,
+        "correctedTime": 93,
+        "status": "pending",
+        "startTime": 33,
+        "endTime": 123
+    },
+    {
+        "thingId": 109,
+        "duration": 120,
+        "correctedTime": 100,
+        "status": "inactive",
+        "startTime": 10,
+        "endTime": 130
+    },
+    {
+        "thingId": 110,
+        "duration": 60,
+        "correctedTime": 76,
+        "status": "active",
+        "startTime": 46,
+        "endTime": 106
+    },
+    {
+        "thingId": 111,
+        "duration": 90,
+        "correctedTime": 74,
+        "status": "active",
+        "startTime": 14,
+        "endTime": 104
+    },
+    {
+        "thingId": 112,
+        "duration": 90,
+        "correctedTime": 91,
+        "status": "pending",
+        "startTime": 31,
+        "endTime": 121
+    },
+    {
+        "thingId": 113,
+        "duration": 90,
+        "correctedTime": 101,
+        "status": "active",
+        "startTime": 41,
+        "endTime": 131
+    }
+]

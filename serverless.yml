@@ -122,9 +122,51 @@ resources:
         AttributeDefinitions:
           - AttributeName: thingId
             AttributeType: N
+          - AttributeName: startTime
+            AttributeType: N
+          - AttributeName: endTime
+            AttributeType: N
+          - AttributeName: correctedTime
+            AttributeType: N
+          - AttributeName: status
+            AttributeType: S
         KeySchema:
           - AttributeName: thingId
             KeyType: HASH
+        GlobalSecondaryIndexes:
+        - IndexName: idx_status_start_time
+          KeySchema:
+            - AttributeName: status
+              KeyType: HASH
+            - AttributeName: startTime
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL 
+          ProvisionedThroughput:
+            ReadCapacityUnits: '5'
+            WriteCapacityUnits: '5'
+        - IndexName: idx_status_end_time
+          KeySchema:
+            - AttributeName: status
+              KeyType: HASH
+            - AttributeName: endTime
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL 
+          ProvisionedThroughput:
+            ReadCapacityUnits: '5'
+            WriteCapacityUnits: '5'
+        - IndexName: idx_status_corrected_time
+          KeySchema:
+            - AttributeName: status
+              KeyType: HASH
+            - AttributeName: correctedTime
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL 
+          ProvisionedThroughput:
+            ReadCapacityUnits: '5'
+            WriteCapacityUnits: '5'
         
         ProvisionedThroughput:
           ReadCapacityUnits: 1

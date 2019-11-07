@@ -130,10 +130,25 @@ resources:
             AttributeType: N
           - AttributeName: status
             AttributeType: S
+          - AttributeName: command
+            AttributeType: S
         KeySchema:
           - AttributeName: thingId
             KeyType: HASH
+          - AttributeName: command
+            KeyType: RANGE
         GlobalSecondaryIndexes:
+        - IndexName: thingIdIndex
+          KeySchema:
+            - AttributeName: thingId
+              KeyType: HASH
+            - AttributeName: command
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL 
+          ProvisionedThroughput:
+            ReadCapacityUnits: '5'
+            WriteCapacityUnits: '5'
         - IndexName: idx_status_start_time
           KeySchema:
             - AttributeName: status

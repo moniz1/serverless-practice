@@ -13,7 +13,9 @@ class DbContext {
   async getAll(params) {
     return this.db.scan(params).promise();
   }
-
+  async updateUser(params) {
+    return this.db.update(params).promise();
+  }
   async put(params) {
     return this.db.put(params).promise();
   }

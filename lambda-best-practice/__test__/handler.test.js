@@ -121,3 +121,68 @@ describe("getUsers test suits", () => {
     expect(res).toMatchObject(JSON.parse(params.body));
   });
 })
+
+describe("Update User test",()=>{
+  const handler = require("../handler");
+
+  it('should update user with data',async()=>{
+    const event={
+      body:'{ "email": "test@abc.com","firstname": "ab","lastname": "c"}',
+      pathParameters:{
+        email:"test@abc.com"
+      }
+    }
+    const {statusCode, body} = await handler.updateUser(event)
+    expect(statusCode).toBe(200)
+    expect(JSON.parse(body).message).toEqual(`update successfully for email ${event.pathParameters.email}`)
+  })
+
+  it('should body is not be empty ',async()=>{
+    const event = {
+      body:'',
+      pathParameters:{
+        email:"test@abc.com"
+      }
+    }
+    const {statusCode, body} = await handler.updateUser(event)
+    console.log(`MTTEST---${statusCode}${body}`)
+    expect(statusCode).toBe(500)
+    expect(JSON.parse(body).message).toEqual(`body cannot be empty`)
+  })
+
+  it('should body is not param invalid',async()=>{
+    const event = {
+      body:{},
+      pathParameters:{
+        email:"test@abc.com"
+      }
+    }
+    const {statusCode, body} = await handler.updateUser(event)
+    expect(statusCode).toBe(500)
+    expect(JSON.parse(body).message).toEqual(`body params is invalid`)
+  })
+
+  it('should email is not modified',async()=>{
+    const event = {
+      body:'{ "email": "test1@abc.com","firstname": "ab","lastname": "c"}',
+      pathParameters:{
+        email:"test@abc.com"
+      }
+    }
+    const {statusCode, body} = await handler.updateUser(event)
+    expect(statusCode).toBe(400)
+    expect(JSON.parse(body).message).toEqual(`email is cannot be modified`)
+  })
+
+  it('should fistname & lastname is not empty',async()=>{
+    const event = {
+      body:'{ "email": "test@abc.com"}',
+      pathParameters:{
+        email:"test@abc.com"
+      }
+    }
+    const {statusCode, body} = await handler.updateUser(event)
+    expect(statusCode).toBe(500)
+    expect(JSON.parse(body).message).toEqual(`firstname & lastname must not be empty`)
+  })
+})
